@@ -1,9 +1,10 @@
 package com.baizhi.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * Created by Administrator on 2018/8/28.
+ * Created by Administrator on 2018/8/29.
  */
 public class Menu implements Serializable {
     private Integer id;
@@ -11,18 +12,19 @@ public class Menu implements Serializable {
     private String content;
     private String href;
     private String iconCls;
-    private String parentId;
+    private Integer parentId;
+    private List<Menu> menu;
+    public Menu(Integer id, String title, String content, String href, String iconCls, Integer parentId, List<Menu> menu) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.href = href;
+        this.iconCls = iconCls;
+        this.parentId = parentId;
+        this.menu = menu;
+    }
 
-    @Override
-    public String toString() {
-        return "Menu{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", href='" + href + '\'' +
-                ", iconCls='" + iconCls + '\'' +
-                ", parentId='" + parentId + '\'' +
-                '}';
+    public Menu() {
     }
 
     public Integer getId() {
@@ -65,25 +67,32 @@ public class Menu implements Serializable {
         this.iconCls = iconCls;
     }
 
-    public String getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParentId(String parentId) {
+    public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 
-    public Menu(Integer id, String title, String content, String href, String iconCls, String parentId) {
-
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.href = href;
-        this.iconCls = iconCls;
-        this.parentId = parentId;
+    public List<Menu> getMenu() {
+        return menu;
     }
 
-    public Menu() {
+    public void setMenu(List<Menu> menu) {
+        this.menu = menu;
+    }
 
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", href='" + href + '\'' +
+                ", iconCls='" + iconCls + '\'' +
+                ", parentId=" + parentId +
+                ", menu=" + menu +
+                '}';
     }
 }

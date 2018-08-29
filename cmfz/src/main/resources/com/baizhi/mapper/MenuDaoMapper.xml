@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.MenuDao">
+    <resultMap id="menu" type="menu">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="content" property="content"></result>
+        <result column="href" property="href"></result>
+        <result column="iconCls" property="iconCls"></result>
+        <result column="parentId" property="parentId"></result>
+        <collection property="menu" ofType="Menu" select="selectTwo" column="id"></collection>
+    </resultMap>
+    <!--查询所有主菜单-->
+    <select id="select" resultMap="menu">
+        SELECT id,title,content,href,iconCls,parentId FROM menu WHERE parentId = 0
+    </select>
+    <!--查询所有字菜单-->
+    <select id="selectTwo" resultType="Menu" parameterType="Integer">
+        SELECT id,title,content,href,iconCls,parentId FROM menu WHERE parentId = #{id}
+    </select>
+
+</mapper>
+
+
+
+
+
+
+

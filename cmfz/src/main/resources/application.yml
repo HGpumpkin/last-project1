@@ -1,24 +1,24 @@
 server:
-  port: 8888
-  context-path: /cmfz
+  port: 8989
   jsp-servlet:
     init-parameters:
-      develoment: true
+      development: true
+  context-path: /cmfz
 spring:
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cmfz
-  mvc:
-    view:
-      suffix: .jsp
-      prefix: /
-  http:
-    encoding:
-      charset: utf-8
-      force: true
+    datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/cmfz
+    mvc:
+      view:
+        suffix: .jsp
+        prefix: /
+    http:
+      encoding:
+        charset: utf-8
+        force: true
 mybatis:
-  mapper-locations: classpath:/com/baizhi/mapper/*.xml
-  type-aliases-package: com.baizhi.entity
+    mapper-locations: classpath:/com/baizhi/mapper/*.xml
+    type-aliases-package: com.baizhi.entity
