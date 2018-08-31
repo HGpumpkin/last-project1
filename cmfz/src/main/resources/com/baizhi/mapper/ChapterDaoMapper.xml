@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.ChapterDao">
+    <!-- 查询专辑章节 -->
+    <select id="select" parameterType="String" resultType="Chapter">
+        SELECT id,title,size,url,time,createTime FROM chapter WHERE aid=#{id}
+    </select>
+    <!--插入章节-->
+    <insert id="insert" parameterType="Chapter">
+        insert into chapter VALUES (#{id},#{title},#{size},#{url},#{time},#{createTime},#{aid})
+    </insert>
+
+    <!--删除专辑的章节-->
+    <delete id="delete" parameterType="String">
+        delete from chapter where aid=#{aid}
+    </delete>
+
+</mapper>
+
+
+
+
+
+
+

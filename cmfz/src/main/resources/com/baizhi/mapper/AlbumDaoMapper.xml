@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.AlbumDao">
+    <!-- 查询所有专辑 -->
+    <resultMap id="album" type="Album">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="count" property="count"></result>
+        <result column="createTime" property="createTime"></result>
+        <result column="score" property="score"></result>
+        <result column="author" property="author"></result>
+        <result column="broadCast" property="broadCast"></result>
+        <result column="img" property="img"></result>
+        <result column="status" property="status"></result>
+        <result column="description" property="description"></result>
+        <collection property="children" ofType="Chapter" select="com.baizhi.dao.ChapterDao.select" column="id"></collection>
+    </resultMap>
+    <select id="select" resultMap="album">
+        select id,title,count,createTime,score,author,broadCast,img,status,description from album
+    </select>
+    <!--查询详细专辑-->
+    <select id="selectOne" parameterType="String" resultType="Album">
+        SELECT  id,title,count,createTime,score,author,broadCast,img,status,description from album where id=#{id}
+    </select>
+    <!--添加专辑-->
+    <insert id="insert" parameterType="Album">
+        insert into album VALUES (#{id},#{title},#{count},#{createTime},#{score},#{author},#{broadCast},#{img},#{status},#{description})
+    </insert>
+    <!---->
+    <!--删除专辑-->
+    <delete id="delete" parameterType="String">
+        delete from album where id=#{id}
+    </delete>
+
+</mapper>
+
+
+
+
+
+
+

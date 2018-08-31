@@ -11,8 +11,7 @@
     </delete>
     <!--修改-->
     <update id="update" parameterType="Banner">
-        UPDATE banner set title=#{title},imgPath=#{imgPath},description=#{description},status=#{status},createDate=#{createDate}
-        WHERE id=#{id}
+        UPDATE banner set title=#{title},imgPath=#{imgPath},description=#{description},status=#{status},createDate=#{createDate} WHERE id=#{id}
     </update>
     <!--查询-->
     <select id="select" resultType="Banner">

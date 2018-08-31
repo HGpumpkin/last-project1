@@ -1,5 +1,8 @@
 package com.baizhi.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,18 +15,22 @@ public class Banner implements Serializable {
     private String imgPath;
     private String description;
     private Integer status;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JSONField(format = "yyyy-MM-dd")
     private Date createDate;
+    private String url;
 
-    @Override
-    public String toString() {
-        return "Banner{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", imgPath='" + imgPath + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
-                ", createDate=" + createDate +
-                '}';
+    public Banner(Integer id, String title, String imgPath, String description, Integer status, Date createDate, String url) {
+        this.id = id;
+        this.title = title;
+        this.imgPath = imgPath;
+        this.description = description;
+        this.status = status;
+        this.createDate = createDate;
+        this.url = url;
+    }
+
+    public Banner() {
     }
 
     public Integer getId() {
@@ -74,17 +81,24 @@ public class Banner implements Serializable {
         this.createDate = createDate;
     }
 
-    public Banner() {
-
+    public String getUrl() {
+        return url;
     }
 
-    public Banner(Integer id, String title, String imgPath, String description, Integer status, Date createDate) {
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-        this.id = id;
-        this.title = title;
-        this.imgPath = imgPath;
-        this.description = description;
-        this.status = status;
-        this.createDate = createDate;
+    @Override
+    public String toString() {
+        return "Banner{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", imgPath='" + imgPath + '\'' +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                ", createDate=" + createDate +
+                ", url='" + url + '\'' +
+                '}';
     }
 }

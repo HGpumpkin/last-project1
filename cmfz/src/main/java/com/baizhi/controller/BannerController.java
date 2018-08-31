@@ -54,13 +54,13 @@ public class BannerController {
     public void file(MultipartFile file1, HttpSession session, Banner banner) throws Exception {
         String name = file1.getOriginalFilename();
         String path = session.getServletContext().getRealPath("/");
-        File wepfi = new File(path + "/file");
-        if (!wepfi.exists()) {
-            wepfi.mkdir();
+        File hg = new File(path + "/file");
+        if (!hg.exists()) {
+            hg.mkdir();
         }
         UUID uuid = UUID.randomUUID();
         String a = uuid.toString() + name;
-        File destFile = new File(wepfi, a);
+        File destFile = new File(hg, a);
         file1.transferTo(destFile);
         banner.setImgPath("/file/" + a);
         bannerService.add(banner);
